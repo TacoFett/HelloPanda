@@ -11,7 +11,9 @@ class MyApp(ShowBase):
         self.fighter.setColorScale(1.0, 0.0, 0.0, 1.0)
         self.parent = self.loader.loadModel('.//Assets/cube')
         #Setting up collision nodes
+        self.fighterCnode = self.fighter.attachNewNode(CollisionNode('fighter'))
         self.parentCnode = self.parent.attachNewNode(CollisionNode('pcnode'))
+        self.fighterCnode.node().addSolid(CollisionSphere(0,0,0,1.8))
         self.parentCnode.node().addSolid(CollisionSphere(0,0,0,1.8))
         self.traverser = CollisionTraverser()
         self.traverser.traverse(self.render)
